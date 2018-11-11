@@ -6,6 +6,8 @@ const router = express.Router();
 import usState from '../models/us-state';
 import city from '../models/city';
 
+import auth from '../auth/middleware';
+
 import sendJSON from '../middleware/sendJSON';
 
 const models = {
