@@ -1,9 +1,21 @@
 import express from 'express';
+
+import cors from 'cors';
+
 import notFound from './middleware/404.js';
 import error from './middleware/error.js';
+import authRouter from './auth/router';
 
 const app = express();
 
+app.use(cors());
+
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: true,
+}));
+
+app.use(authRouter);
 
 /* Start app file. It is NOT complete so add to it what you will */
 /* Stretch goal: add the below routes and get them to work 
@@ -25,18 +37,14 @@ app.use(error);
 
 let server;
 
-module.exports =  {
+module.exports = {
   app,
   start: (port) => {
     server = app.listen(port, () => console.log('Listening on port ' + port));
   },
   stop: () => {
-    server.close( () => {
+    server.close(() => {
       console.log('Server has been stopped');
     });
   },
 };
-
-
-
-
