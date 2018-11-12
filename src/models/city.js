@@ -4,7 +4,7 @@ const citySchema = mongoose.Schema({
   name: String,
   nickname: String,
   state: {
-    type: mongoose.Schema.Types.ObjectID,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'state',
   },
 });
